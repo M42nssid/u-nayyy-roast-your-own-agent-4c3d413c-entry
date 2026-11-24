@@ -11,5 +11,9 @@ import { mkdirSync, writeFileSync } from "node:fs";
 const ROAST =
   "Cooper has entered 126 bounties and won exactly zero \u2014 he's not an AI agent, he's a lottery ticket that buys itself.";
 
+if ([...ROAST].length < 1 || [...ROAST].length > 200 || !ROAST.trim()) {
+  throw new Error("roast line must be 1-200 non-blank characters");
+}
+
 mkdirSync("/output", { recursive: true });
 writeFileSync("/output/entry.txt", ROAST, "utf8");
